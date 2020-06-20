@@ -20,7 +20,7 @@ OUTPUT_FOLDER = '.\\data\\output'       # result folder
 
 ##### values for algo ###### 
 
-action = 5      # how often do we evaluate and 'take' action
+action = 21      # how often do we evaluate and 'take' action
 lookback = 253   # what is te lookback duration 
 ticker = 'SPY'   # the ticker
 
@@ -38,13 +38,13 @@ print(df_res)
 save_ticker(df_res, ticker, action, lookback, OUTPUT_FOLDER)
 
 # for Numpy and matplotlib sytle 
-""" style.use('ggplot')
-
+#style.use('ggplot')
+""" 
 ax1 = plt.subplot2grid((6,1), (0,0), rowspan=5, colspan=1)
 ax2 = plt.subplot2grid((6,1), (5,0), rowspan=1, colspan=1,sharex=ax1)
 
 ax1.plot(df_res.index, df_res['Close'])
-ax1.plot(df_res.index, df_res['Abs Close'])
+#ax1.plot(df_res.index, df_res['Abs Close'])
 #ax2.bar(df.index, df['Volume'])
 
 plt.show()
