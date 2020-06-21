@@ -20,7 +20,7 @@ OUTPUT_FOLDER = '.\\data\\output'       # result folder
 
 ##### values for algo ###### 
 
-action = 21      # how often do we evaluate and 'take' action
+action = 1      # how often do we evaluate and 'take' action
 lookback = 253   # what is te lookback duration 
 ticker = 'SPY'   # the ticker
 

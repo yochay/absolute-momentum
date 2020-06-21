@@ -39,20 +39,28 @@ pip install -r requirements.txt
 ## todo list
 
 - [ ] should the algorithem use Adj Close or Close?
+- [ ] compare algo to running using adj-close / close (return, MaxDD, )
 - [x] wrap absolute momentum algo in a method and in its own file
 - [x] create a notebook for basic experiments
 - [x] wrap all helper functions into module, that can be easily used from notebook and code
-- [ ] add plot, to show spy vs. Abs + action points
-- [ ] calc max DD; Alpha; Beta; Sharp; etc...
-- [ ] run experiment on ABS Momentum across all permutation of action and lookback and compare results between different permutations
-- [ ] consider using one file for all different permutation?
-- [ ] add cash trigger (sma 200 S&P to exit, when do we return?)
+- [ ] chagne graph to show logaritmic values
+- [ ] chagne calc_absolute_momentum to accept a flag using Close or Adj Close
+- [ ] cange calc_absolute_momentum Abs Close to use algorithem naming conventin ABS_a{action}_lb{lookback}
+- [ ] calc algorithem return, starting from a fix postion of a '100' to show relative of multiple assets
 - [ ] test all algorithms to start from the same date. That is from the max lookback window (so they all start from the same starting point.
+- [ ] consider using one file for all different permutation?
+- [ ] add plot, to show spy vs. Abs + action points
+- [ ] calc return, max DD (all up and per year); Alpha; Beta; Sharp; etc...
+- [ ] run experiment on ABS Momentum across all permutation of action and lookback and compare results between different permutations action[1,5,10,21] X Lookback[1,5,10,21,63,127,190, 200,253]
+- [ ] asstes to test: SPY, QQQ, AAG
+
+- [ ] add cash trigger (sma 200 S&P to exit, when do we return?)
 - [ ] check the rate of change in the lookback window at crashes before/after... hypothesis for daily change rate or lookback is bigger before riskoff due to carsh
 - [ ] consdier adding some sort of date/time to tickers folder of naming convention
 - [ ] download list of all S&P tickers
 - [ ] find top winners/ looser in S&P per action & window then compare returns
 - [ ] run cash trigger on stocks (AAPL; MSFT; from the cash trigger book)
+- [ ] create algorithem for relative momentum, compering
 
 ## reading material
 
