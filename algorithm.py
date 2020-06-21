@@ -38,12 +38,13 @@ def calc_absolute_momentum(df, action, lookback):
     """
     ###### prep data for algo ######
     # create a copy df to work with
-    df_work = df[['Close']]
+    df_work = df[['Adj Close']]
+    df_work.rename(columns = {'Adj Close':'Close'}, inplace = True)
 
-    # calc daily return compare to self (daily return = val[i]/val[i-1])
+    # calc daily return compare to self (daily return = 1- val[i]/val[i-1])
     df_work['Daily return'] =  df_work['Close'].pct_change(1)   
 
-    # calc lookback window return daily (lookback return) = val[i]/ val[i-lookback]
+    # calc lookback window return daily (lookback return) = 1- val[i]/ val[i-lookback]
     df_work['lookback window'] =  df_work['Close'].pct_change(lookback)  
 
     # Abs close represent close value following the algo RISK signals,  
