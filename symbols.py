@@ -30,7 +30,7 @@ def download_and_save_ticker(ticker_symbol, start_date, end_date, save_folder_pa
         try:
             df = web.DataReader(ticker_symbol, DATA_SOURCE, start_date, end_date)
             #print(df)
-            file_path = f'{save_folder_path}\\{ticker_symbol}.csv'
+            file_path = f'{save_folder_path}/{ticker_symbol}.csv'
             df.to_csv(file_path)
         except:
             print('something went wrong:',  sys.exc_info()[0])
@@ -49,14 +49,14 @@ def load_ticker(ticker_symbol, start_date, end_date, load_folder_path, refresh=F
         return download_and_save_ticker(ticker_symbol, start_date, end_date, load_folder_path)
     
     
-    file_path = f'{load_folder_path}\\{ticker_symbol}.csv'
+    file_path = f'{load_folder_path}/{ticker_symbol}.csv'
     if(os.path.exists(file_path) == False):
         return download_and_save_ticker(ticker_symbol, start_date, end_date, load_folder_path)
     
 
-    #df = pd.read_csv( TICKERS_FOLDER + '\\' + 'spy.csv')
+    #df = pd.read_csv( TICKERS_FOLDER + '/' + 'spy.csv')
     try:
-        df = pd.read_csv( f'{load_folder_path}\\{ticker_symbol}.csv')
+        df = pd.read_csv( f'{load_folder_path}/{ticker_symbol}.csv')
         df.set_index("Date", inplace=True)
         df_new = df.loc[start_date:end_date]  #df_new = df.loc['2013-01-01':'2013-02-01']
         #print(df_new)
@@ -76,7 +76,7 @@ def save_ticker(df, ticker_symbol, action, look_back, save_folder_path):
     try:
         #OUTPUT_FOLDER
         ## call to save result qqq_ABS_a{action}_lb{lookback}
-        file_path = f'{save_folder_path}\\{ticker_symbol}_ABS_a{action}_lb{look_back}.csv'
+        file_path = f'{save_folder_path}/{ticker_symbol}_ABS_a{action}_lb{look_back}.csv'
         df.to_csv(file_path)
         return True
     except (FileNotFoundError, IOError):
