@@ -47,12 +47,12 @@ def load_ticker(ticker_symbol, start_date, end_date, load_folder_path, refresh=F
     return DataFrame
     """
     if(refresh == True):
-        return download_and_save_ticker(ticker_symbol, start_date, end_date, load_folder_path)
+        return download_and_save_ticker(ticker_symbol, start_date, end_date, Path(load_folder_path))
     
     
     file_path = Path(f'{load_folder_path}/{ticker_symbol}.csv')
     if(os.path.exists(file_path) == False):
-        return download_and_save_ticker(ticker_symbol, start_date, end_date, load_folder_path)
+        return download_and_save_ticker(ticker_symbol, start_date, end_date, Path(load_folder_path))
     
 
     #df = pd.read_csv( TICKERS_FOLDER + '/' + 'spy.csv')
