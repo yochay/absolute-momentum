@@ -53,6 +53,10 @@ def calc_absolute_momentum(df, action, lookback):
     df_work['Abs Close'] =  ''
     # identifys absolute regim, risk ON/ OFF, easier to debug
     df_work['RISK'] =  ''
+    # profit or call per change in transaction
+    df_work['PROFIT'] =  ''
+    # profit or call per change in transaction
+    df_work['EOY_PROFIT'] =  ''
 
     #df_work = df[['Close', 'Daily return', 'lookback window', 'Abs Close', 'RISK']]
     print(df_work)
@@ -66,6 +70,13 @@ def calc_absolute_momentum(df, action, lookback):
 
     # set the start value of Abs Close to the first day we can test, which is the of the lookback window size
     start_close_value = df_work.iloc[lookback-1]['Close']
+    
+    # we need to keep the price we bought the stock at to calculate profit and lost.
+    last_bought_at = start_close_value
+
+    #aggrigate the profit and lost on a yealy basis
+    yearly_aggrigated_profit = 0
+
     df_work['Abs Close'].iloc[lookback-1] = start_close_value
 
     print(f'start algo run from {lookback} until {total_trading_days}')
@@ -77,9 +88,18 @@ def calc_absolute_momentum(df, action, lookback):
         if(counter % 10 == 0):
             print(f'still running - {action_day}')
 
+        if(df_work.index[action_day].endswith("12-31")):
+            #time to calculate yearly profit for tax
+            df_work['EOY_PROFIT'].iloc[action_day] = yearly_aggrigated_profit
+            yearly_aggrigated_profit = 0
+
         # Risk on/off assesment based on lookback window to establish absolute strangth 
         if ( df_work['lookback window'].iloc[action_day] > 0 ):
             #print("RISK ON")
+            # we are going to buy stock, need to set profit baseline
+            if(action_day >0 and df_work['RISK'].iloc[action_day-1] and risk_status == RISK_OFF):
+                last_bought_at = df_work.iloc[action_day-1]["Abs Close"] 
+
             risk_status = RISK_ON
             df_work['RISK'].iloc[action_day] = "RISK ON"
 
@@ -100,6 +120,8 @@ def calc_absolute_momentum(df, action, lookback):
             if(risk_status == RISK_ON):
                 risk_status = RISK_OFF
                 close_price_to_copy = df_work.iloc[action_day-1]["Abs Close"]  # copy the value from the previos day and use that
+                df_work['PROFIT'].iloc[action_day] = close_price_to_copy  - last_bought_at
+                yearly_aggrigated_profit += df_work['PROFIT'].iloc[action_day]
 
             #make sure we dont run out of index
             action_window_days_end = get_action_window_days(action_day, action, total_trading_days)
