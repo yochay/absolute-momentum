@@ -14,8 +14,8 @@ pd.options.mode.chained_assignment = None
 ####### CONSTs #######
 
 # folders
-TICKERS_FOLDER = '.\\data\\tickers'     # tickers folder
-OUTPUT_FOLDER = '.\\data\\output'       # result folder 
+TICKERS_FOLDER = './data/tickers'     # tickers folder
+OUTPUT_FOLDER = './data/output'       # result folder 
 
 
 ##### values for algo ###### 

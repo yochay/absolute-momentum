@@ -52,7 +52,7 @@ pip install -r requirements.txt
 - [ ] add plot, to show spy vs. Abs + action points
 - [ ] calc return, max DD (all up and per year); Alpha; Beta; Sharp; etc...
 - [ ] run experiment on ABS Momentum across all permutation of action and lookback and compare results between different permutations action[1,5,10,21] X Lookback[1,5,10,21,63,127,190, 200,253]
-- [ ] asstes to test: SPY, QQQ, AAG
+- [ ] asstes to test: SPY, QQQ, AAG LQD
 
 - [ ] add cash trigger (sma 200 S&P to exit, when do we return?)
 - [ ] check the rate of change in the lookback window at crashes before/after... hypothesis for daily change rate or lookback is bigger before riskoff due to carsh
