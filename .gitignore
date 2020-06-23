@@ -16,3 +16,8 @@ venv.bak/
 
 #jupiter notebooks are json files which is hard to merge
 *.ipynb
+
+
+# removeing input/ output files. Too many change with each run.
+*.csv
+*.xlsx
