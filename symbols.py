@@ -32,11 +32,7 @@ def download_and_save_ticker(ticker_symbol, start_date, end_date, save_folder_pa
             df = web.DataReader(ticker_symbol, DATA_SOURCE, start_date, end_date)
             #print(df)
             file_path = f'{save_folder_path}/{ticker_symbol}.csv'
-<<<<<<< HEAD
-            df.to_csv(file_path)
-=======
             df.to_csv(Path(file_path))
->>>>>>> origin/master
         except:
             print('something went wrong:',  sys.exc_info()[0])
         return df
@@ -54,11 +50,7 @@ def load_ticker(ticker_symbol, start_date, end_date, load_folder_path, refresh=F
         return download_and_save_ticker(ticker_symbol, start_date, end_date, load_folder_path)
     
     
-<<<<<<< HEAD
-    file_path = f'{load_folder_path}/{ticker_symbol}.csv'
-=======
     file_path = Path(f'{load_folder_path}/{ticker_symbol}.csv')
->>>>>>> origin/master
     if(os.path.exists(file_path) == False):
         return download_and_save_ticker(ticker_symbol, start_date, end_date, load_folder_path)
     
@@ -86,11 +78,7 @@ def save_ticker(df, ticker_symbol, action, look_back, save_folder_path):
         #OUTPUT_FOLDER
         ## call to save result qqq_ABS_a{action}_lb{lookback}
         file_path = f'{save_folder_path}/{ticker_symbol}_ABS_a{action}_lb{look_back}.csv'
-<<<<<<< HEAD
-        df.to_csv(file_path)
-=======
         df.to_csv(Path(file_path))
->>>>>>> origin/master
         return True
     except (FileNotFoundError, IOError):
         print(f'could not save {ticker_symbol} symbole in {save_folder_path} folder')
