@@ -88,7 +88,7 @@ def calc_absolute_momentum(df, action, lookback):
         if(counter % 10 == 0):
             print(f'still running - {action_day}')
 
-        if(df_work.index[action_day].endswith("12-31")):
+        if((action_day+1) < len(df_work.index) and  df_work.index[action_day][0:4] != df_work.index[action_day+1][0:4]):
             #time to calculate yearly profit for tax
             df_work['EOY_PROFIT'].iloc[action_day] = yearly_aggrigated_profit
             yearly_aggrigated_profit = 0
@@ -97,7 +97,7 @@ def calc_absolute_momentum(df, action, lookback):
         if ( df_work['lookback window'].iloc[action_day] > 0 ):
             #print("RISK ON")
             # we are going to buy stock, need to set profit baseline
-            if(action_day >0 and df_work['RISK'].iloc[action_day-1] and risk_status == RISK_OFF):
+            if(action_day >0  and risk_status == RISK_OFF):
                 last_bought_at = df_work.iloc[action_day-1]["Abs Close"] 
 
             risk_status = RISK_ON
