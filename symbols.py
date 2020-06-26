@@ -33,9 +33,10 @@ def download_and_save_ticker(ticker_symbol, start_date, end_date, save_folder_pa
             #print(df)
             file_path = f'{save_folder_path}/{ticker_symbol}.csv'
             df.to_csv(Path(file_path))
+            return df
         except:
             print('something went wrong:',  sys.exc_info()[0])
-        return df
+        
 
 
 
@@ -67,7 +68,7 @@ def load_ticker(ticker_symbol, start_date, end_date, load_folder_path, refresh=F
         print(f'could not find {ticker_symbol} symbole in {load_folder_path} folder')
 
 
-#
+# {ticker}_ABS_a{action}_lb{lookback}_start{start_date}_end{end_date}
 def save_ticker(df, ticker_symbol, action, look_back, save_folder_path):
     """ save ticker to folder using naming convention"""
 
@@ -75,9 +76,10 @@ def save_ticker(df, ticker_symbol, action, look_back, save_folder_path):
     if(os.path.exists(Path(save_folder_path)) == False):
         os.makedirs(Path(save_folder_path))
     try:
-        #OUTPUT_FOLDER
+        start = df.index[0].strftime("%Y_%m_%d")
+        end  = df.index[len(df.index) - 1].strftime("%Y_%m_%d")
         ## call to save result qqq_ABS_a{action}_lb{lookback}
-        file_path = f'{save_folder_path}/{ticker_symbol}_ABS_a{action}_lb{look_back}.csv'
+        file_path = f'{save_folder_path}/{ticker_symbol}_ABS_a{action}_lb{look_back}_start_{start}_end_{end}.csv'
         df.to_csv(Path(file_path))
         return True
     except (FileNotFoundError, IOError):

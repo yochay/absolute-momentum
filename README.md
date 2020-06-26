@@ -45,7 +45,8 @@ pip install -r requirements.txt
 - [x] wrap all helper functions into module, that can be easily used from notebook and code
 - [ ] chagne graph to show logaritmic values
 - [ ] chagne calc_absolute_momentum to accept a flag using Close or Adj Close
-- [ ] cange calc_absolute_momentum Abs Close to use algorithem naming conventin ABS_a{action}_lb{lookback}
+- [x] change save_symbole Abs Close to use algorithem naming conventin ABS_a{action}_lb{lookback}_start{start_date}_end{end_date}
+- [ ] For each algo run, write a new line in log file, append to top,with results, including: returns; MaxDD; Sharp, etc...  
 - [ ] calc algorithem return, starting from a fix postion of a '100' to show relative of multiple assets
 - [ ] test all algorithms to start from the same date. That is from the max lookback window (so they all start from the same starting point.
 - [ ] consider using one file for all different permutation?

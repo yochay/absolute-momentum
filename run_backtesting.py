@@ -20,12 +20,13 @@ OUTPUT_FOLDER = './data/output'       # result folder
 
 ##### values for algo ###### 
 
-action = 1      # how often do we evaluate and 'take' action
-lookback = 253   # what is te lookback duration 
+action = 5      # how often do we evaluate and 'take' action
 ticker = 'SPY'   # the ticker
+lookback = 253   # what is te lookback duration 
 
 # dates to back test
-start_date = '1995-01-01'  
+start_date = '2010-01-01'
+#start_date = '2015-01-01'
 end_date = dt.datetime.now().strftime('%Y-%m-%d') 
 
 # read from csv
