@@ -88,6 +88,7 @@ def calc_report_card(df):
     return rt, cagr, sharp, max_DD
 
 
+"""
 # testing helper functions
 #data\output\SPY_ABS_a21_lb253_start_1993_01_29_end_2020_07_10.csv
 #data\output\SPY_ABS_a5_lb253_start_2010_01_04_end_2020_07_10.csv
@@ -105,12 +106,18 @@ print(df_work)
 
 #
 rt, cagr, sharp, max_DD = calc_report_card(df_work)
+
+rt_str = '{:6.4f}'.format(rt * 100)
+cagr_str = '{:6.4f}'.format(cagr * 100)
+shartp_str = '{:2.4f}'.format(sharp)
+max_DD_str = '{:2.4f}'.format(max_DD * (-100))
+
 print(f"{algo_type} report card:")
 print(f"\t Return = {rt * 100}%")
 print(f"\t CAGR = {cagr * 100}%")
 print(f"\t Sharp = {sharp}")
 print(f"\t Max DD = {max_DD * (-100)}%")
-
+'{:6.4f}'.format(rt * 100)
 
 #
 algo_type = 'Abs Close'
@@ -122,17 +129,5 @@ print(f"\t CAGR = {cagr * 100}%")
 print(f"\t Sharp = {sharp}")
 print(f"\t Max DD = {max_DD * (-100)}%")
 
-
+print("Done") 
 """
-plt.plot(daily_DD)
-plt.plot(max_daily_DD)
-plt.show()
-
-
-    # Plot the results
-    Daily_Drawdown.plot()
-    Max_Daily_Drawdown.plot()
-    plt.show()
-"""
-
-print("Done")
